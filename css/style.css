@@ -1,0 +1,84 @@
+/* Layout: one centered exercise card on Delft-porcelain ground; verb picker above, four answer rows inside */
+:root {
+  --bg: #f3f5f9;
+  --surface: #ffffff;
+  --ink: #17233d;
+  --muted: #5a6680;
+  --line: #d5dbe7;
+  --delft: #1f4fa3;
+  --delft-soft: #e3eafa;
+  --ok: #1d7a4a;
+  --ok-soft: #e1f3e8;
+  --bad: #b3352b;
+  --bad-soft: #fbe5e2;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1522; --surface: #172033; --ink: #e6ebf5; --muted: #9aa6bf; --line: #2c3a55;
+    --delft: #7ea6f2; --delft-soft: #1f2d4b; --ok: #5fcf92; --ok-soft: #173326; --bad: #f08a80; --bad-soft: #3a1d1c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1522; --surface: #172033; --ink: #e6ebf5; --muted: #9aa6bf; --line: #2c3a55;
+  --delft: #7ea6f2; --delft-soft: #1f2d4b; --ok: #5fcf92; --ok-soft: #173326; --bad: #f08a80; --bad-soft: #3a1d1c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  margin: 0;
+  padding-top: calc(32px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+}
+.wrap { max-width: 620px; margin: 0 auto; display: grid; gap: 20px; }
+header h1 { font-family: var(--display); font-weight: 700; font-size: 1.9rem; line-height: 1.15; margin: 0; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); }
+
+.picker { display: flex; gap: 8px; flex-wrap: wrap; }
+.picker input { flex: 1 1 220px; min-width: 0; }
+input[type="text"] {
+  font: 1rem var(--mono); color: var(--ink); background: var(--surface);
+  border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+input[type="text"]:focus-visible { outline: none; border-color: var(--delft); box-shadow: 0 0 0 3px var(--delft-soft); }
+button {
+  font: 700 0.95rem var(--body); border-radius: 8px; padding: 10px 16px; cursor: pointer;
+  border: 1.5px solid var(--delft); background: var(--surface); color: var(--delft);
+}
+button.primary { background: var(--delft); color: var(--surface); }
+button:hover { filter: brightness(1.08); }
+button:focus-visible { outline: 3px solid var(--delft-soft); outline-offset: 2px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 20px; }
+.verb { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.verb .label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.verb h2 { font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1; margin: 2px 0 0; color: var(--delft); }
+.score { font-family: var(--mono); font-size: 0.9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+form { display: grid; gap: 14px; }
+.row { display: grid; gap: 6px; }
+.row label { font-weight: 700; font-size: 0.95rem; }
+.row label small { font-weight: 400; color: var(--muted); }
+.row.ok input { border-color: var(--ok); background: var(--ok-soft); }
+.row.bad input { border-color: var(--bad); background: var(--bad-soft); }
+.fb { font-size: 0.9rem; min-height: 0; }
+.row.ok .fb { color: var(--ok); }
+.row.bad .fb { color: var(--bad); }
+.fb b { font-family: var(--mono); font-weight: 600; }
+.fb button { padding: 2px 8px; font-size: 0.8rem; margin-left: 6px; }
+
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.summary { font-weight: 700; padding: 10px 14px; border-radius: 8px; }
+.summary.ok { background: var(--ok-soft); color: var(--ok); }
+.summary.bad { background: var(--bad-soft); color: var(--bad); }
+footer { color: var(--muted); font-size: 0.85rem; }
+footer a { color: var(--delft); }
+@media (prefers-reduced-motion: no-preference) { .row input { transition: background .2s, border-color .2s; } }

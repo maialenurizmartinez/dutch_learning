@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verbos irregulares neerlandeses</title>
+<meta name="description" content="Practica los verbos irregulares neerlandeses: pasado, participio y significado en español.">
+<meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1522" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Verbos NL">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Verbos irregulares neerlandeses</h1>
+    <p>Elige un infinitivo y escribe sus formas del pasado y su significado en español.</p>
+  </header>
+
+  <div class="picker">
+    <input type="text" id="search" list="verbs" placeholder="Escribe un infinitivo (p. ej. lopen)" autocomplete="off" aria-label="Infinitivo">
+    <datalist id="verbs"></datalist>
+    <button type="button" id="go" class="primary">Practicar</button>
+    <button type="button" id="rand">Aleatorio</button>
+  </div>
+
+  <section class="card" aria-live="polite">
+    <div class="verb">
+      <div>
+        <div class="label">Infinitivo</div>
+        <h2 id="inf">gaan</h2>
+      </div>
+      <div class="score" id="score">0 / 0 correctas</div>
+    </div>
+
+    <form id="quiz" autocomplete="off">
+      <div class="row" data-k="sg">
+        <label for="a-sg">Pasado singular <small>(imperfectum: ik, jij, hij)</small></label>
+        <input type="text" id="a-sg" spellcheck="false" autocapitalize="off">
+        <div class="fb"></div>
+      </div>
+      <div class="row" data-k="pl">
+        <label for="a-pl">Pasado plural <small>(imperfectum: wij, jullie, zij)</small></label>
+        <input type="text" id="a-pl" spellcheck="false" autocapitalize="off">
+        <div class="fb"></div>
+      </div>
+      <div class="row" data-k="pp">
+        <label for="a-pp">Participio pasado <small>(puedes añadir heeft / is)</small></label>
+        <input type="text" id="a-pp" spellcheck="false" autocapitalize="off">
+        <div class="fb"></div>
+      </div>
+      <div class="row" data-k="es">
+        <label for="a-es">Significado en español</label>
+        <input type="text" id="a-es" spellcheck="false">
+        <div class="fb"></div>
+      </div>
+      <div id="summary" class="summary" hidden></div>
+      <div class="actions">
+        <button type="submit" class="primary" id="check">Comprobar</button>
+        <button type="button" id="reveal">Ver solución</button>
+        <button type="button" id="next">Siguiente verbo</button>
+      </div>
+    </form>
+  </section>
+
+  <footer>Lista basada en los verbos irregulares de <a href="https://www.dutchgrammar.com/es/?n=Verbs.Ir03" target="_blank" rel="noopener">dutchgrammar.com</a>. Pulsa Intro para pasar al siguiente campo.</footer>
+</div>
+
+<script src="js/verbs.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
